@@ -7,3 +7,26 @@ Flight Tracker emphasizes my interest in aviation. This Full Stack Application a
 
 # Technologies Used
 Javascript, HTML, CSS, LIQUID, and MONGOOSE
+
+# User Story
+- User should be able to track a flight (via flight number)
+- User should be able to view Airline aircraft fleets
+- User should be able to create an account
+- User should be able to Log In
+- User should be able to Input favorite Airline (livery), Aircraft Manufacturer and model
+- User should be able to access favorited aircrafts by additional users
+
+# Wireframes
+
+Tracker Page
+![Tracker Page](imgs/Tracker-Page.png)
+
+Sign Up
+
+![Sign Up](imgs/Sign-Up.png)
+
+Favorites
+
+![Favorites](imgs/Favorites.png)
+
+# ERD
