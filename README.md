@@ -65,6 +65,41 @@ Users
 | /users/login          | POST         | create  
 | /users/logout         | DELETE       | destroy
 
+# Model Samples
+
+| ** Users ** |
+| ----------- |
+```
+/* --- These will contain Flight Tracker User Schemas */
+const userSchema = new Schema ({
+  username: {
+    type: String to contain client username input,
+    required: boolean to require a username input,
+    unique: must ensure usernames cannot be duplicated
+  },
+  password: {
+    type: String to contain client password input,
+    required: boolean to require a password input
+  }
+})
+
+```
+
+# Request from a flight tracker API
+
+Our flight tracker API will send a request to Aviationstack
+
+GET router to SHOW tracker page
+
+```
+router.get('http to tracker page', (req, res) =>  {
+  <render to a new tracker page>
+})
+
+router.post()
+ <to actually request aviationstack models>
+```
+
 # ERD
 
 ![ERD](imgs/ERD.png)
