@@ -25,6 +25,10 @@ Sign Up
 
 ![Sign Up](imgs/Sign-Up.png)
 
+Log In
+
+![Log In](imgs/Login.png)
+
 Favorites
 
 ![Favorites](imgs/Favorites.png)
