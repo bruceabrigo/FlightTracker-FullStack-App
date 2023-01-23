@@ -34,6 +34,37 @@ Favorites
 
 ![Favorites](imgs/Favorites.png)
 
+# Route Tables
+
+Favorited Planes
+
+| **URL**          | **HTTP Verb**|**Action**|
+|---------------------|--------------|----------|
+| /airplanes/         | GET          | index  
+| /airplanes/new      | GET          | show       
+| /airplanes/new      | GET          | new   
+| /airplanes          | POST         | create   
+| /airplanes/:id/edit | GET          | edit       
+| /airplanes/:id      | PUT          | update    
+| /airplanes/:id      | DELETE       | destroy  
+
+Flight Tracker
+
+| **URL**          | **HTTP Verb**|**Action**|
+|-----------------------|--------------|----------|
+| /tracker/             | GET          | new  
+| /tracker/history      | GET          | show  
+
+Users       
+
+| **URL**          | **HTTP Verb**|**Action**|
+|-----------------------|--------------|----------|
+| /users/signup         | GET          | new  
+| /users/signup         | POST         | create   
+| /users/login          | GET          | login  
+| /users/login          | POST         | create  
+| /users/logout         | DELETE       | destroy
+
 # ERD
 
 ![ERD](imgs/ERD.png)
