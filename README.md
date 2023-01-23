@@ -19,6 +19,7 @@ Javascript, HTML, CSS, LIQUID, and MONGOOSE
 # Wireframes
 
 Tracker Page
+
 ![Tracker Page](imgs/Tracker-Page.png)
 
 Sign Up
@@ -34,3 +35,5 @@ Favorites
 ![Favorites](imgs/Favorites.png)
 
 # ERD
+
+![ERD](imgs/ERD.png)
