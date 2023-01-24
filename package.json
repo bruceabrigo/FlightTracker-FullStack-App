@@ -1,0 +1,30 @@
+{
+  "name": "neat-air-fullstack-app",
+  "version": "1.0.0",
+  "description": "Neat Airlines Web Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruceabrigo/NeatAir-FullStack-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bruceabrigo/NeatAir-FullStack-App/issues"
+  },
+  "homepage": "https://github.com/bruceabrigo/NeatAir-FullStack-App#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.8.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
