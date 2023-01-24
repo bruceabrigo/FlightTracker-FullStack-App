@@ -3,8 +3,6 @@
 // User will also have the ability to log tracked aircraft history
 const mongoose = require('mongoose') 
 
-const mongoose = require('../utils/connection') // establish connection in Utils
-
 const { Schema, model } = mongoose
 
 const airplaneSchema = new Schema ({
@@ -21,7 +19,7 @@ const airplaneSchema = new Schema ({
     required: true,
   },
   tracked: {
-    type: boolean,
+    type: Boolean,
     required: true,
   },
   flightNum: {
