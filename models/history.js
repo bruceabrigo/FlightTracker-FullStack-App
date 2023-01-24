@@ -1,7 +1,7 @@
 /* ------------- Include Server Dependencies ------------- */
 // Will store favorited aircrafts IF and ONLY IF user is logged in
 // User will also have the ability to log tracked aircraft history
-const mongoose = require('mongoose') 
+const mongoose = require('../utils/connection')
 
 const { Schema, model } = mongoose
 
