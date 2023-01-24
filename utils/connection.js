@@ -1,3 +1,4 @@
+/* ------------- Include Server Dependencies ------------- */
 const mongoose = require('mongoose') 
 require('dotenv').config() 
 
