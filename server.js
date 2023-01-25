@@ -4,6 +4,7 @@ const express = require('express')
 const morgan = require("morgan") 
 const AirplaneRouter = require('./controllers/airplaneControllers')
 const UserRouter = require('./controllers/userControllers')
+const TrackerRouter = require('./controllers/trackerControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
@@ -15,10 +16,14 @@ middleware(app)
 
 app.get('/', (req, res) => {
   res.send('Server Started...')
+  // res.render('index.liquid')
 })
+
+
 
 app.use('/airplanes', AirplaneRouter)
 app.use('/users', UserRouter)
+app.use('/tracker', TrackerRouter)
 
 
 /* ------------- Server Listener ------------- */

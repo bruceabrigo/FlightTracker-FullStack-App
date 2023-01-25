@@ -1,12 +1,15 @@
 /* ------------- Include Server Dependencies ------------- */
 const express = require('express')
-const { fileURLToPath } = require('url')
 const Airplane = require('../models/history')
 
 const router = express.Router()
 
-// /* ------------- Index Route ------------- */
+/* ------------- Render Home Page ------------- */
+// router.get('/', (req, res) => {
+//   res.render('index.liquid')
+// })
 
+/* ------------- Index Route ------------- */
 router.get('/', (req, res) => {
   Airplane.find({})
       .then(planes => { res.json({ planes: planes })})
@@ -14,7 +17,6 @@ router.get('/', (req, res) => {
 })
 
 // /* ------------- Create Route ------------- */
-
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
   Airplane.create(req.body) //creates a new airplanes to the request body
@@ -28,8 +30,7 @@ router.post('/', (req, res) => {
   })
 })
 
-// /* ------------- Update Route ------------- */
-
+/* ------------- Update Route ------------- */
 router.put('/:id', (req, res) => {
   const planeId = req.params.id
     const updatedPlane = req.body
@@ -50,8 +51,7 @@ router.put('/:id', (req, res) => {
       })
 })
 
-// /* ------------- Delete Route ------------- */
-
+/* ------------- Delete Route ------------- */
 router.delete('/:id', (req, res) => {
   const planeId = req.params.id
   Airplane.findById(planeId)
@@ -66,7 +66,7 @@ router.delete('/:id', (req, res) => {
       .catch(err => console.log(err))
 })
 
-// /* ------------- Show One Route ------------- */
+/* ------------- Show One Route ------------- */
 router.get('/:id', (req, res) => {
   const planeId = req.params.id
   Airplane.findById(planeId)
