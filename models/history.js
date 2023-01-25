@@ -24,8 +24,12 @@ const airplaneSchema = new Schema ({
   },
   flightNum: {
     type: String
+  },
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
-})
+}, {timestamps: true})
 
 const Airplane = model('airplane', airplaneSchema)
 module.exports = Airplane

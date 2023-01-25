@@ -7,7 +7,7 @@ const UserRouter = require('./controllers/userControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
-const app = express()
+const app = require('liquid-express-views')(express())
 
 /* ------------- Middleware ------------- */
 
