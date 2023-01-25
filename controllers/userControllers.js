@@ -15,12 +15,17 @@ router.post('/signup', async (req, res) => {
   )
   User.create(newUser)
     .then(user => {
-      res.status(201).json({username: user.username})
+      res.redirect('/users/login')
     })
     .catch(error => {
       console.log(error)
       res.json(error)
     })
+})
+
+// GET and RENDER the signup page
+router.get('/signup', (req, res) => {
+  res.render('users/signup')
 })
 
 /* ------------- Determine Login Routers ------------- */
@@ -39,7 +44,7 @@ router.post('/login', async (req, res) => {
                req.session.loggedIn = true
                req.session.userId = user.id
                console.log('session user id', req.session.userId)
-               res.status(201).json({ user: user.username })
+               res.redirect('/')
              } else {
                  res.json({ error: 'username or password is incorrect' })
             }
@@ -51,6 +56,11 @@ router.post('/login', async (req, res) => {
          console.log(err)
         res.json(err)
     })
+})
+
+// GET and RENDER the login page
+router.get('/login', (req, res) => {
+  res.render('users/login')
 })
 
 /* ------------- Determine Logout Routers ------------- */
