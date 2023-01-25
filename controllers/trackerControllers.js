@@ -35,8 +35,8 @@ router.get('/track', (req, res) => {
       API_TOKEN: '5c274a30d8214bb2b568793050ea9d82',
       options: {
         limit: 1,
-        flight_number: '684',
-        arr_iata: 'BOS'
+        flight_number: '684'
+        // arr_iata: 'BOS'
       }
     })
     // .then(tracked => {

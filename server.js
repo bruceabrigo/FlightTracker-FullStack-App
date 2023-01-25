@@ -14,9 +14,9 @@ const app = require('liquid-express-views')(express())
 
 middleware(app)
 
+/* ------------- Render Index ------------- */
 app.get('/', (req, res) => {
-  res.send('Server Started...')
-  // res.render('index.liquid')
+  res.render('home.liquid')
 })
 
 

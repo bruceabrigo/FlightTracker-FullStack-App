@@ -5,9 +5,9 @@ const Airplane = require('../models/history')
 const router = express.Router()
 
 /* ------------- Render Home Page ------------- */
-// router.get('/', (req, res) => {
-//   res.render('index.liquid')
-// })
+router.get('/', (req, res) => {
+  res.render('index.liquid')
+})
 
 /* ------------- Index Route ------------- */
 router.get('/', (req, res) => {
