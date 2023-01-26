@@ -1,6 +1,6 @@
 /* ------------- Include Server Dependencies ------------- */
 const express = require('express')
-const Airplane = require('../models/history')
+const Forum = require('../models/forum')
 
 const router = express.Router()
 
@@ -13,10 +13,10 @@ const router = express.Router()
 router.get('/', (req, res) => {
   const { username, loggedIn, userId } = req.session
 
-  Airplane.find({})
+  Forum.find({})
     .populate('owner', 'username')
-    .then(planes => {
-      res.render('planes/index', {planes, username, loggedIn, userId})
+    .then(forums => {
+      res.render('forums/index', {forums, username, loggedIn, userId})
     })
     .catch(err => {
       console.log(err)
@@ -27,12 +27,10 @@ router.get('/', (req, res) => {
 // /* ------------- Create Route ------------- */
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
-  Airplane.create(req.body) //creates a new airplanes to the request body
-  .then((airplane) => {
-    const username = req.session.username
-			const loggedIn = req.session.loggedIn
-    console.log('Created: ', airplane) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
-    res.render('airplanes/index', {airplane, username, loggedIn})
+  Forum.create(req.body) //creates a new forum to the request body
+  .then((forum) => {
+    console.log('Created: ', forum) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
+    res.status(201).json({forum: forum.toObject()})
   })
   .catch((error) => {
     console.log(error)
@@ -42,17 +40,17 @@ router.post('/', (req, res) => {
 
 /* ------------- Update Route ------------- */
 router.put('/:id', (req, res) => {
-  const planeId = req.params.id
-    const updatedPlane = req.body
+  const forumId = req.params.id
+    const updatedForum = req.body
     //create an if statement to check if User is logged in to allow Update and Delete function
-    Airplane.findById(planeId)
-    .then(airplane => {
-      if (airplane.owner == req.session.userId) {
-        return airplane.updateOne(req.body)
+    Forum.findById(forumId)
+    .then(forum => {
+      if (forum.owner == req.session.userId) {
+        return forum.updateOne(req.body)
       }
     })
-     .then(airplane => {
-        console.log('the newly updated airplane', airplane)
+     .then(forum => {
+        console.log('the newly updated forum', forum)
         res.sendStatus(204)
      })
     .catch((error) => {
@@ -63,11 +61,11 @@ router.put('/:id', (req, res) => {
 
 /* ------------- Delete Route ------------- */
 router.delete('/:id', (req, res) => {
-  const planeId = req.params.id
-  Airplane.findById(planeId)
-  .then(airplane => {
-    if (airplane.owner == req.session.userId) {
-      return airplane.deleteOne()
+  const forumId = req.params.id
+  Forum.findById(forumId)
+  .then(forum => {
+    if (forum.owner == req.session.userId) {
+      return forum.deleteOne()
     }
   })
       .then(() => {
@@ -78,11 +76,11 @@ router.delete('/:id', (req, res) => {
 
 /* ------------- Show One Route ------------- */
 router.get('/:id', (req, res) => {
-  const planeId = req.params.id
-  Airplane.findById(planeId)
-      .then((airplane) => {
-        console.log(airplane)
-        res.json({airplane:airplane})
+  const forumId = req.params.id
+  Forum.findById(forumId)
+      .then((forum) => {
+        console.log(forum)
+        res.json({forum:forum})
       })
       .catch((error) => {
         console.log(error)

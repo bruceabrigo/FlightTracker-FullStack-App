@@ -5,6 +5,7 @@ const morgan = require("morgan")
 const AirplaneRouter = require('./controllers/airplaneControllers')
 const UserRouter = require('./controllers/userControllers')
 const TrackerRouter = require('./controllers/trackerControllers')
+const ForumRouter = require('./controllers/forumControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
@@ -16,7 +17,8 @@ middleware(app)
 
 /* ------------- Render Index ------------- */
 app.get('/', (req, res) => {
-  res.render('home.liquid')
+  const {username, loggedIn, userId} = req.session
+  res.render('home.liquid', {username, loggedIn, userId})
 })
 
 
@@ -24,6 +26,7 @@ app.get('/', (req, res) => {
 app.use('/airplanes', AirplaneRouter)
 app.use('/users', UserRouter)
 app.use('/tracker', TrackerRouter)
+app.use('/forums', ForumRouter)
 
 
 /* ------------- Server Listener ------------- */

@@ -29,6 +29,11 @@ router.get('/signup', (req, res) => {
 })
 
 /* ------------- Determine Login Routers ------------- */
+// GET and RENDER the login page
+router.get('/login', (req, res) => {
+  res.render('users/login')
+})
+
 router.post('/login', async (req, res) => {
   // first we want to destructure the username and password from our req.body
   const { username, password } = req.body
@@ -58,17 +63,18 @@ router.post('/login', async (req, res) => {
     })
 })
 
-// GET and RENDER the login page
-router.get('/login', (req, res) => {
-  res.render('users/login')
-})
 
 /* ------------- Determine Logout Routers ------------- */
 router.delete('/logout', (req, res) => {
   req.session.destroy(() => {
     console.log('this is req.session upon logout \n', req.session)  //ONLY FOR DEBUGGING - REMOVE CONSOLE.LOG FOR versionFINAL
-    res.sendStatus(204)
+    res.redirect('/')
   })
+})
+
+// render logout page
+router.get('/logout', (req, res) => {
+  res.render('users/logout')
 })
 
 module.exports = router

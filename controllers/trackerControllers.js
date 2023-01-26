@@ -1,9 +1,10 @@
+require('dotenv').config() 
 const express = require('express')
 // const axios = require('axios')
 const flightData = require('flight-data')
 
 const router = express.Router()
-
+const apiToken = process.env.API_TOKEN
 /* ------------- Aviation-Stack API ------------- */
 // api access key
 // const params = {
@@ -32,18 +33,13 @@ router.get('/track', (req, res) => {
 
   flightData.flights(
     {
-      API_TOKEN: '5c274a30d8214bb2b568793050ea9d82',
+      API_TOKEN: apiToken,
       options: {
         limit: 1,
-        flight_number: '684'
-        // arr_iata: 'BOS'
+        flight_number: '930',
+        arr_iata: 'CUN'
       }
     })
-    // .then(tracked => {
-    //   console.log('Tracked: ', tracked) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
-      
-    //   res.status(201).json({tracked: tracked.toObject()})
-    // })
     .then(tracked => { 
       console.log('Tracked: ', tracked)
       res.json({ tracked: tracked })

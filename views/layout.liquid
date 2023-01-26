@@ -22,14 +22,27 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             {% if loggedIn %}
+            <header id="navbarNav">
+              <ul class="navbar">
+                <a href="/" class="nav-link" >Track</a>
+                <a href="/<added redirect route>" class="nav-link">Fleets</a>
+                <a href="/airplanes" class="nav-link">Forums</a></li>
+              </ul>
+                <a href="/"> <h1>Neat Flight Tracker</h1> </a>
+              <ul class="navbar">
+                <a href="/<added redirect route>" class="nav-link">History</a>
+                <a href="/users/signup" class="nav-link">Sign Up</a>
+                <a href="/users/logout" class="nav-link">LOGOUT</a>
+              </ul>
+            </header>
             {% else %}
             <header id="navbarNav">
               <ul class="navbar">
                 <a href="/" class="nav-link" >Track</a>
                 <a href="/<added redirect route>" class="nav-link">Fleets</a>
-                <a href="/<added redirect route>" class="nav-link">Favorites</a></li>
+                <a href="/forums" class="nav-link">Forums</a></li>
               </ul>
-              <h1>Neat Flight Tracker</h1>
+              <a href="/"> <h1>Neat Flight Tracker</h1> </a>
               <ul class="navbar">
                 <a href="/<added redirect route>" class="nav-link">History</a>
                 <a href="/users/signup" class="nav-link">Sign Up</a>

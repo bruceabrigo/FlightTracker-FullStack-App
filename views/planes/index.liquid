@@ -1,0 +1,19 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+  <h2>Forum Posts</h2>
+  <div class="row">
+    {% for plane in planes %}
+      <div class="card" style="width: 18rem">
+        <h5 class="card-hedaer"> {{plane.manufacturer}} </h5>
+        <div class="cardbody">
+          <h5 class="card-title">
+            Card
+          </h5>
+          <p class="card-text">
+            {{forum.content}}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
