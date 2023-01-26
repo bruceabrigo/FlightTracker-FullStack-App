@@ -1,9 +1,8 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-<nav>
-
-</nav>
-    <h1 class="display-4">Welcome to Flight Tracker</h1>
-    <div class="btn-group btn-group-lg">
-    </div>
+    {% if loggedIn %}
+    <h1 class="display-4">Welcome to Flight Tracker, {{username}}! </h1>
+    {%else%}
+    <h1 class="display-4">Welcome to Flight Tracker </h1>
+    {%endif%}
 {% endblock %}

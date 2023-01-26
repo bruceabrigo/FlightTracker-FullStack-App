@@ -2,6 +2,7 @@
 const express = require('express')
 const Forum = require('../models/forum')
 
+
 const router = express.Router()
 
 /* ------------- Render Home Page ------------- */
@@ -25,12 +26,16 @@ router.get('/', (req, res) => {
 })
 
 // /* ------------- Create Route ------------- */
+router.get('/new', (req, res) => {
+  res.render('forums/create', {...req.session})
+})
+
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
   Forum.create(req.body) //creates a new forum to the request body
   .then((forum) => {
     console.log('Created: ', forum) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
-    res.status(201).json({forum: forum.toObject()})
+    res.redirect('/forums')
   })
   .catch((error) => {
     console.log(error)

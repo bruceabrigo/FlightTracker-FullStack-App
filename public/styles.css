@@ -3,7 +3,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+/* navbar */
 .nav-link {
   font-size: 22px;
   font-weight: 400;
@@ -35,4 +35,30 @@ h1 {
 .navbar li {
   display: inline-block;
   padding: 0px 20px;
+}
+/* cards */
+.card {
+  display: flex;
+  width: 100vh;
+  align-content: center;
+  margin: 0 auto;
+  padding: 25px;
+  margin-bottom: 50px;
+}
+.create {
+  display: flex;
+  justify-content: center;
+}
+.create-post {
+  display: flex;
+  margin: 0 auto;
+  width: 600px;
+  padding: 10px;
+  border-radius: 25px;
+  border: 1px;
+  background-color: #f5f5f5;
+  color: #7c7c7c;
+}
+.create-post:hover {
+  background-color: #ececec;
 }

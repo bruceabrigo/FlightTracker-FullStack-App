@@ -14,9 +14,6 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
-        {% if loggedIn %}
-            <a href="/fruits/mine" class="nav-link text-warning me-3">Hello {{username}}</a>
-        {% endif %}
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,12 +23,11 @@
               <ul class="navbar">
                 <a href="/" class="nav-link" >Track</a>
                 <a href="/<added redirect route>" class="nav-link">Fleets</a>
-                <a href="/airplanes" class="nav-link">Forums</a></li>
+                <a href="/forums" class="nav-link">Forums</a></li>
               </ul>
                 <a href="/"> <h1>Neat Flight Tracker</h1> </a>
               <ul class="navbar">
                 <a href="/<added redirect route>" class="nav-link">History</a>
-                <a href="/users/signup" class="nav-link">Sign Up</a>
                 <a href="/users/logout" class="nav-link">LOGOUT</a>
               </ul>
             </header>
@@ -44,7 +40,6 @@
               </ul>
               <a href="/"> <h1>Neat Flight Tracker</h1> </a>
               <ul class="navbar">
-                <a href="/<added redirect route>" class="nav-link">History</a>
                 <a href="/users/signup" class="nav-link">Sign Up</a>
                 <a href="/users/login" class="nav-link">Log In</a>
               </ul>
@@ -59,5 +54,6 @@
     {% endblock %}
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="/models/modal.js"></script>
 </body>
 </html>

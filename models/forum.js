@@ -8,8 +8,7 @@ const { Schema, model } = mongoose
 
 const forumSchema = new Schema ({
   name: {
-    type: String,
-    required: true,
+    type: String
   },
   content: {
     type: String,
