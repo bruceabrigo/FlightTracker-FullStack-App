@@ -26,10 +26,6 @@ router.get('/', (req, res) => {
 })
 
 // /* ------------- Create Route ------------- */
-router.get('/new', (req, res) => {
-  res.render('forums/create', {...req.session})
-})
-
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
   Forum.create(req.body) //creates a new forum to the request body

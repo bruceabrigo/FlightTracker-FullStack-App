@@ -1,0 +1,26 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<h2>Tracked planes will appear here</h2>
+<div class="row">
+    <div class="card">
+      <h5 class="card-hedaer">Track a Flight</h5>
+      <div class="cardbody">
+        <p class="card-text">
+          {{flights.flight.number}}
+        </p>
+      </div>
+    </div>
+</div>
+<div class="row">
+  {% for flights in tracked.data %}
+    <div class="card">
+      <h5 class="card-hedaer"> brother</h5>
+      <div class="cardbody">
+        <p class="card-text">
+          {{flights.flight.number}}
+        </p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{%endblock%}
