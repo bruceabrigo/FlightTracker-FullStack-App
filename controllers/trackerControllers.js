@@ -11,23 +11,24 @@ router.get('/', (req, res) => {
 })
 
 /* ------------- Aviation-Stack API ------------- */
-// router.get('/', (req, res) => {
-//     flightData.flights(
-//     {
-//       API_TOKEN: apiToken,
-//       options: {
-//         limit: 1
-//       }
-//     })
-//     .then(tracked => { 
-//       console.log('Tracked: ', tracked)
-//       // res.json({ tracked: tracked })
-//       res.render('tracker/index', {tracked})
-//     })
-//       .catch((error) => {
-//         console.log(error)
-//         res.json({error})
-//       })
-// })
+router.get('/track', (req, res) => {
+    flightData.flights(
+    {
+      API_TOKEN: apiToken,
+      options: {
+        limit: 1,
+        flight_number: '4359'
+      }
+    })
+    .then(tracked => { 
+      console.log('Tracked: ', tracked)
+      // res.json({ tracked: tracked })
+      res.render('tracker/index', {tracked})
+    })
+      .catch((error) => {
+        console.log(error)
+        res.json({error})
+      })
+})
 
 module.exports = router

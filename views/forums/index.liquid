@@ -1,42 +1,71 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-  <div class="card" id="create-post">
-    <h2 class="create">Create a post</h2>
-    <div class="container mt-3">
-  <button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#myModal">
-    Whatcha thinking, {{username}}?
-  </button>
-</div>
 
+{% if loggedIn %}
+<div class="card" id="create-post">
+  <h2 class="create">Create a post</h2>
+  <div class="container mt-3">
+<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#myModal">
+  Whatcha thinking, {{username}}?
+</button>
+</div>
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title modal-title-centered">Create a post</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/forums" method="POST">
+            <fieldset>
+              <legend> {{username}} </legend>
+              <label for="exampleFormControlTextarea1" class="form-label" ></label>
+              <input type="text" name="name" class="formControl" style="display: none;">
+              <textarea class="form-control" rows="3" placeholder="Tell us what you're thinkin {{username}}" name="content" required></textarea>
+            </fieldset>
+              <button type="submit" class="btn btn-primary md-3" data-bs-dismiss="modal">Post</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+        <form action="/forums/new" method="get">
+        </form>
+    </div>
+{% else %}
+<div class="card" id="create-post">
+  <h2 class="create">Create a post</h2>
+  <div class="container mt-3">
+<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#myModal">
+  Whatcha thinking?
+</button>
+</div>
 <div class="modal" id="myModal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title modal-title-centered">Create a post</h4>
+        <h4 class="modal-title modal-title-centered">Log In to make a POST</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <form action="/forums" method="POST">
           <fieldset>
-            <legend> {{username}} </legend>
-            <label for="exampleFormControlTextarea1" class="form-label" ></label>
-            <input type="text" name="name" class="formControl" style="display: none;">
-            <textarea class="form-control" rows="3" placeholder="Tell us what you're thinkin {{username}}" name="content" required></textarea>
+            <a class="btn btn-warning" href="/users/signup" role="button">Sign Up</a>
+            <a class="btn btn-primary" href="/users/login" role="button">Log In</a>
           </fieldset>
-            <button type="submit" class="btn btn-primary md-3" data-bs-dismiss="modal">Post</button>
-        </form>
       </div>
-
     </div>
   </div>
 </div>
       <form action="/forums/new" method="get">
       </form>
   </div>
+{% endif %}
   <div class="row">
     {% for forum in forums %}
       <div class="card">
-        <h5 class="card-hedaer"> {{forum.name}} </h5>
+        <h5> {{forum.name}} </h5>
         <div class="cardbody">
           <p class="card-text">
             {{forum.content}}

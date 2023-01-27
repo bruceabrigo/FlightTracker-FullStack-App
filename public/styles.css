@@ -68,3 +68,45 @@ h1 {
 .create-post:hover {
   background-color: #ececec;
 }
+/* Tracker */
+.tracker-card {
+  font-family: 'Montserrat', sans-serif;
+  width: 1000px;
+  height: 150px;
+  background-color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 25px;
+  margin-bottom: 50px;
+}
+.tracked-flight {
+  font-family: 'Montserrat', sans-serif;
+  width: 1000px;
+  height: 300px;
+  background-color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 25px;
+  margin-bottom: 50px;
+}
+.flight-status {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto;
+  height: 100px;
+  width: 600px;
+  background-color: #f5f5f5;
+}
+.departure, .arrival{
+  margin: 1.25vh;
+}
+.status-title {
+  font-size: 25px;
+}
+.airport {
+  font-size: 10px;
+}
+.scheduled {
+  font-size: 8px;
+  color: #7c7c7c;
+}

@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
   req.body.owner = req.session.userId
   Forum.create(req.body) //creates a new forum to the request body
   .then((forum) => {
-    console.log('Created: ', forum) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
+    console.log('Created: ', {forum, ...req.session}) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
     res.redirect('/forums')
   })
   .catch((error) => {
