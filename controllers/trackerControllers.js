@@ -12,12 +12,14 @@ router.get('/', (req, res) => {
 
 /* ------------- Aviation-Stack API ------------- */
 router.get('/track', (req, res) => {
+  let flightNum = req.query.flightNum
+  console.log('looking for: \n', flightNum)
     flightData.flights(
     {
       API_TOKEN: apiToken,
       options: {
         limit: 1,
-        flight_number: '4359'
+        flight_number: flightNum
       }
     })
     .then(tracked => { 

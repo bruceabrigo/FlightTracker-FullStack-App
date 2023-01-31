@@ -28,9 +28,10 @@ router.get('/', (req, res) => {
 // /* ------------- Create Route ------------- */
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
-  Forum.create(req.body) //creates a new forum to the request body
-  .then((forum) => {
-    console.log('Created: ', {forum, ...req.session}) //ONLY FOR DEBUGGIN DELETE FOR versionFINAL
+  const forumPost = req.body
+  console.log('Created: \n', forumPost)
+  Forum.create(forumPost) //creates a new forum to the request body
+  .then(() => {
     res.redirect('/forums')
   })
   .catch((error) => {
@@ -64,13 +65,13 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const forumId = req.params.id
   Forum.findById(forumId)
-  .then(forum => {
-    if (forum.owner == req.session.userId) {
-      return forum.deleteOne()
-    }
-  })
+    .then(forum => {
+      if (forum.owner == req.session.userId) {
+        return forum.deleteOne()
+      }
+    })
       .then(() => {
-          res.sendStatus(204)
+          res.redirect('/forums')
       })
       .catch(err => console.log(err))
 })

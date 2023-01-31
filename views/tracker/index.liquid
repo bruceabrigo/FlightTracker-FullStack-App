@@ -1,35 +1,34 @@
 {% layout 'layout.liquid' %}
 {% block content %}
+<!-- Takes user input to GET flight information via the Flight Number (accessed with FlightStack API) -->
 <div class="tracker-section">
   <div class="tracker-card">
     <legend class="tracker-title">Enter a Flight Number</legend>
     <form action="/tracker/track" method="GET">
     <fieldset>
-      <input type="text" class="form-control" name="flight_number" placeholder="EX: (158)" required>
+      <input type="text" class="form-control" name="flightNum" placeholder="EX: (4359)" required>
       <button type="submit" class="btn btn-primary md-3">Track</button>
     </fieldset>
   </form>
   </div>
 </div>
-
+<!-- This will display the flight information after user input -->
 <div class="row">
   <div class="tracked-flight">
     <h5>Status</h5>
- -- for starts --
-        <div class="flight-status">
+    {% for flights in tracked.data %}
+      <div class="flight-status">
             <div class="departure">
-              <h2 class="status-title">STL{{flights.departure.iata}}</h2>
-                <p class="airport">Lambert International{{flights.departure.airport}} </p>
-                <p class="scheduled">Scheduled: {{flights.departure.scheduled}}</p>
+              <h2 class="status-title">{{flights.departure.iata}}</h2>
+                <p class="airport"> {{flights.departure.airport}} </p>
+                <p class="scheduled">{{flights.departure.scheduled}}</p>
             </div>
           <p class="departure">✈</p>
             <div class="arrival">
-              <h2 class="status-title">ORD{{flights.arrival.iata}} </h2>
-              <p class="airport">O'Hare International{{flights.arrival.airport}} </p>
-              <p class="scheduled">Scheduled: {{flights.arrival.scheduled}}</p>
+              <h2 class="status-title">{{flights.arrival.iata}} </h2>
+              <p class="airport"> {{flights.arrival.airport}} </p>
+              <p class="scheduled"> {{flights.arrival.scheduled}}</p>
               </div>
         </div>
--- end for --
-      {% for flights in tracked.data %}
       {% endfor %} 
-{%endblock%}
+    {%endblock%}
