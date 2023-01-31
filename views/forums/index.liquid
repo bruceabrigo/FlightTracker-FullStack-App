@@ -1,15 +1,16 @@
 {% layout 'layout.liquid' %}
 {% block content %}
-
+<!-- Checks if client is logged in -->
 {% if loggedIn %}
+<!-- If client is logged in, display modal that allows a user to CREATE a post -->
 <div class="card" id="create-post">
   <h2 class="create">Create a post</h2>
   <div class="container mt-3">
-<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#postModal">
   Whatcha thinking, {{username}}?
 </button>
 </div>
-  <div class="modal" id="myModal">
+  <div class="modal" id="postModal">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -19,7 +20,7 @@
         <div class="modal-body">
           <form action="/forums" method="POST">
             <fieldset>
-              <legend> {{username}} </legend>
+              <legend class="forum-author"> {{username}} </legend>
               <label for="exampleFormControlTextarea1" class="form-label" ></label>
               <input type="text" name="name" class="formControl" style="display: none;">
               <textarea class="form-control" rows="3" placeholder="Tell us what you're thinkin {{username}}" name="content" required></textarea>
@@ -35,14 +36,15 @@
         </form>
     </div>
 {% else %}
+<!-- Otherwise, #postModal will prompt the user to either create, or log in to an existing account -->
 <div class="card" id="create-post">
   <h2 class="create">Create a post</h2>
   <div class="container mt-3">
-<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#myModal">
+<button type="button" class="btn create-post" data-bs-toggle="modal" data-bs-target="#postModal">
   Whatcha thinking?
 </button>
 </div>
-<div class="modal" id="myModal">
+<div class="modal" id="postModal">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -62,10 +64,35 @@
       </form>
   </div>
 {% endif %}
+<!-- ForIn to loop through each fourm. Each forum prints in single row line -->
   <div class="row">
     {% for forum in forums %}
       <div class="card">
-        <h5> {{forum.name}} </h5>
+        <div class="card-head">
+          <h5> {{forum.owner.username}} </h5>
+          <!-- check if forum owner matches userId - then allow pencil icon to open edit/delete modal -->
+            {% if forum.owner == userId %}
+              <button type="button" class="editBtn" data-bs-toggle="modal" data-bs-target="#editModal">
+                <i class="bi-pencil-square"></i>
+              </button>
+              <div class="modal" id="editModal">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                        <fieldset>
+                          <!-- This action will used MthdOvr to DELETE the post -->
+                          <form action="/forums/{{forum.id}}?_method=DELETE" method="POST">
+                              <input type="submit" class="btn btn-danger" value="Delete {{forum.content}} ">
+                          </form>
+                          <hr>
+                          <a class="btn btn-primary" href="/users/login" role="button">Edit</a>
+                        </fieldset>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+        </div>
         <div class="cardbody">
           <p class="card-text">
             {{forum.content}}

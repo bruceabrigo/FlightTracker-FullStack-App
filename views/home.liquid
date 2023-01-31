@@ -1,5 +1,6 @@
 {% layout 'layout.liquid' %}
 {% block content %}
+<!-- If the client is logged in, the client's username will display in the hero -->
     {% if loggedIn %}
     <h1 class="display-4">Welcome to Flight Tracker, {{username}}! </h1>
     {%else%}

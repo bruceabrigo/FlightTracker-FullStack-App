@@ -7,9 +7,6 @@ const { Schema, model } = mongoose
 //reply/comment sub-doc
 
 const forumSchema = new Schema ({
-  name: {
-    type: String
-  },
   content: {
     type: String,
     required: true,

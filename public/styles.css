@@ -4,45 +4,67 @@ body {
   background-size: cover;
   font-family: Arial, Helvetica, sans-serif;
 }
-/* navbar */
-.nav-link {
+/* ------------ navbar ------------ */
+.navbar .navbar-nav .nav-link {
   font-size: 22px;
   font-weight: 400;
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
   color: white;
 }
-li:hover {
-  color: #445626;
+.navbar .navbar-nav .nav-link:hover{
+  color: #f79256;
 }
 a {
   text-decoration: none;
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  justify-content: center;
-  width: 100%;
-  padding: 25px ;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
-}
 h1 {
-  font-size: 30px;
+  font-size: 40px;
   cursor: pointer;
   font-family: Helvetica Neue, Arial, sans-serif;
   color: white;
 }
-.navbar {
-  display: flex;
-  list-style: none;
-  cursor: pointer;
+.navbar-logo-centered .navbar-nav .nav-link{
+  padding: .5em 1em;
 }
+
 .navbar li {
   display: inline-block;
   padding: 0px 20px;
 }
-/* cards */
+.btn {
+  margin-top: 1rem;
+}
+legend {
+  font-size: 45px;
+  font-weight: 800;
+  color: #1F255F;
+}
+/* ------------ User Forms ------------ */
+.user-forms {
+  display: flex;
+  margin: 50px;
+  background-color: white;
+  padding: 2rem;
+  height: 500px;
+  border-radius: 15px;
+}
+.user-control {
+  display: flex;
+  margin: 0 auto;
+  width: 600px;
+  padding: 10px;
+  border-radius: 25px;
+  border: 1px;
+  background-color: #f5f5f5;
+  color: #7c7c7c;
+}
+.forum-author {
+  color: #000;
+  font-size: 20px;
+}
+
+/* ------------ cards ------------ */
 .card {
   display: flex;
   width: 100vh;
@@ -68,7 +90,27 @@ h1 {
 .create-post:hover {
   background-color: #ececec;
 }
-/* Tracker */
+.card-head {
+  display: flex;
+  justify-content: space-between;
+}
+/* ------------ Edit Modal ------------ */
+.editBtn {
+  border: none;
+  background-color: transparent;
+}
+.edit-modal {
+  text-align: center;
+  background-color: #ececec;
+  width: 150px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 12px;
+}
+/* .edit-btns {
+  border: none;
+} */
+/* ------------ Tracker ------------ */
 .tracker-card {
   font-family: 'Montserrat', sans-serif;
   width: 1000px;
@@ -109,4 +151,7 @@ h1 {
 .scheduled {
   font-size: 8px;
   color: #7c7c7c;
+}
+i {
+  cursor: pointer;
 }
