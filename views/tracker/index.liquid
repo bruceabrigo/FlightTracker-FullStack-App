@@ -15,8 +15,9 @@
 <!-- This will display the flight information after user input -->
 <div class="row">
   <div class="tracked-flight">
-    <h5>Status</h5>
     {% for flights in tracked.data %}
+      <h3>Status</h5>
+      <h5>{{flights.airline.name}} {{flights.flight.iata}} </h3>
       <div class="flight-status">
             <div class="departure">
               <h2 class="status-title">{{flights.departure.iata}}</h2>

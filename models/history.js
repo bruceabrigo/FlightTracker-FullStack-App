@@ -6,29 +6,7 @@ const mongoose = require('../utils/connection')
 const { Schema, model } = mongoose
 
 const airplaneSchema = new Schema ({
-  airline: {
-    type: String,
-    required: true,
-  },
-  manufacturer: {
-    type: String,
-    required: true,
-  },
-  model: {
-    type: String,
-    required: true,
-  },
-  tracked: {
-    type: Boolean,
-    required: true,
-  },
-  flightNum: {
-    type: String
-  },
-  owner: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
+
 }, {timestamps: true})
 
 const Airplane = model('airplane', airplaneSchema)

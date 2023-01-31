@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
 
 /* ------------- Aviation-Stack API ------------- */
 router.get('/track', (req, res) => {
+  const {loggedIn} = req.session
+
   let flightNum = req.query.flightNum
   console.log('looking for: \n', flightNum)
     flightData.flights(
@@ -25,11 +27,11 @@ router.get('/track', (req, res) => {
     .then(tracked => { 
       console.log('Tracked: ', tracked)
       // res.json({ tracked: tracked })
-      res.render('tracker/index', {tracked})
+      res.render('tracker/index', {tracked, loggedIn})
     })
       .catch((error) => {
         console.log(error)
-        res.json({error})
+        res.redirect('tracker/error')
       })
 })
 

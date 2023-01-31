@@ -22,11 +22,21 @@ app.get('/', (req, res) => {
 })
 
 
-
 app.use('/airplanes', AirplaneRouter)
 app.use('/users', UserRouter)
 app.use('/tracker', TrackerRouter)
 app.use('/forums', ForumRouter)
+
+/* ------------- Error Handler  ------------- */
+app.get('/error', (req, res) => {
+  const error = req.query.error || 'This page does not exist'
+  const {username, loggedIn, userId} = req.session
+  res.render('error.liquid', { error, username, loggedIn, userId})
+})
+
+app.all('*', (req, res) => {
+  res.redirect('/error')
+})
 
 
 /* ------------- Server Listener ------------- */

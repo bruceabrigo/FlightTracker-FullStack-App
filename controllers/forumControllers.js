@@ -20,7 +20,6 @@ router.get('/', (req, res) => {
       res.render('forums/index', {forums, username, loggedIn, userId})
     })
     .catch(err => {
-      console.log(err)
       res.redirect(`/error?error=${err}`)
     })
 })
@@ -36,7 +35,7 @@ router.post('/', (req, res) => {
   })
   .catch((error) => {
     console.log(error)
-    res.json({error})
+    res.redirect(`/error?error=${err}`)
   })
 })
 
@@ -53,11 +52,11 @@ router.put('/:id', (req, res) => {
     })
      .then(forum => {
         console.log('the newly updated forum', forum)
-        res.sendStatus(204)
+        res.redirect('/forums')
      })
     .catch((error) => {
         console.log(error)
-        res.json({error})
+        res.redirect(`/error?error=${err}`)
       })
 })
 
@@ -70,23 +69,24 @@ router.delete('/:id', (req, res) => {
         return forum.deleteOne()
       }
     })
-      .then(() => {
+    .then(() => {
           res.redirect('/forums')
       })
-      .catch(err => console.log(err))
+    .catch(err => {
+      res.redirect(`/error?error=${err}`)
+    })
 })
 
 /* ------------- Show One Route ------------- */
 router.get('/:id', (req, res) => {
   const forumId = req.params.id
   Forum.findById(forumId)
-      .then((forum) => {
+      .then(forum => {
         console.log(forum)
-        res.json({forum:forum})
+        res.render('forums/show', {forum, ...req.session})
       })
       .catch((error) => {
-        console.log(error)
-        res.json({error})
+        res.redirect(`/error?error=${err}`)
       })
   })
 

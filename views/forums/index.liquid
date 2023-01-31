@@ -71,26 +71,8 @@
         <div class="card-head">
           <h5> {{forum.owner.username}} </h5>
           <!-- check if forum owner matches userId - then allow pencil icon to open edit/delete modal -->
-            {% if forum.owner == userId %}
-              <button type="button" class="editBtn" data-bs-toggle="modal" data-bs-target="#editModal">
-                <i class="bi-pencil-square"></i>
-              </button>
-              <div class="modal" id="editModal">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-body">
-                        <fieldset>
-                          <!-- This action will used MthdOvr to DELETE the post -->
-                          <form action="/forums/{{forum.id}}?_method=DELETE" method="POST">
-                              <input type="submit" class="btn btn-danger" value="Delete {{forum.content}} ">
-                          </form>
-                          <hr>
-                          <a class="btn btn-primary" href="/users/login" role="button">Edit</a>
-                        </fieldset>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {% if forum.owner == userId %} <!-- STOP HERE STOP HERE STOP -->
+              <a style="color: black;" href="/forums/{{forum.id}}" role="button"><i class="bi-pencil-square"></i></a>
             {% endif %}
         </div>
         <div class="cardbody">

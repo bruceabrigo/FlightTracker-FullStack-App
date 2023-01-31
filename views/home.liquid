@@ -2,8 +2,12 @@
 {% block content %}
 <!-- If the client is logged in, the client's username will display in the hero -->
     {% if loggedIn %}
-    <h1 class="display-4">Welcome to Flight Tracker, {{username}}! </h1>
+    <div class="hero">
+        <h1 class="hero-welcome">Welcome to Flight Tracker, {{username}}! </h1>
+            <p class="hero-info">Track a flight!</p>
+            <a class="home-track-btn" href="/tracker/">Track</a>
+    </div>
     {%else%}
-    <h1 class="display-4">Welcome to Flight Tracker </h1>
+    <h1 class="hero-welcome">Welcome to Flight Tracker </h1>
     {%endif%}
 {% endblock %}
