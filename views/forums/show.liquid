@@ -43,6 +43,39 @@
     <p class="card-text">
       {{forum.content}}
     </p>
+    <hr>
+      <form action="/comments" method="POST">
+      <fieldset>
+        <legend class="forum-author"> {{username}} </legend>
+        <label for="exampleFormControlTextarea1" class="form-label" ></label>
+        <input type="text" name="name" class="formControl" style="display: none;">
+        <textarea class="form-control" rows="3" placeholder="Write a comment..." name="comment" required></textarea>
+      </fieldset>
+        <button type="submit" class="btn btn-primary md-3" data-bs-dismiss="modal">Post</button>
+      </form>
   </div>
 </div>
+<!-- For-In for comments -->
+<div class="row">
+    {% for note in comments %}
+      <div class="card">
+        <div class="card-head">
+          <h5> {{note.owner.username}} </h5>
+          <!-- check if forum owner matches userId - then allow pencil icon to open edit/delete modal -->
+            {% if forum.owner == userId %} <!-- STOP HERE STOP HERE STOP -->
+              <a style="color: black;" href="/forums/{{note.id}}" role="button"><i class="bi-pencil-square"></i></a>
+            {% endif %}
+        </div>
+        <div class="cardbody">
+          <p class="card-text">
+            {{note.content}}
+          </p>
+          <hr>
+          <a href="/forums/{{forum.id}}" class="comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+          
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
 {% endblock %}

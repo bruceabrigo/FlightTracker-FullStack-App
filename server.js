@@ -2,10 +2,10 @@
 require('dotenv').config() 
 const express = require('express') 
 const morgan = require("morgan") 
-const AirplaneRouter = require('./controllers/airplaneControllers')
 const UserRouter = require('./controllers/userControllers')
 const TrackerRouter = require('./controllers/trackerControllers')
 const ForumRouter = require('./controllers/forumControllers')
+const CommentRouter = require('./controllers/commentControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
@@ -21,11 +21,10 @@ app.get('/', (req, res) => {
   res.render('home.liquid', {username, loggedIn, userId})
 })
 
-
-app.use('/airplanes', AirplaneRouter)
 app.use('/users', UserRouter)
 app.use('/tracker', TrackerRouter)
 app.use('/forums', ForumRouter)
+app.use('/comments', CommentRouter)
 
 /* ------------- Error Handler  ------------- */
 app.get('/error', (req, res) => {

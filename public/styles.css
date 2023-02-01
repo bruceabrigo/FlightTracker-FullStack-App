@@ -120,6 +120,11 @@ legend {
   display: flex;
   justify-content: space-between;
 }
+.comment-btn {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
 /* ------------ Edit Modal ------------ */
 .editBtn {
   border: none;
@@ -133,9 +138,6 @@ legend {
   margin: 0 auto;
   border-radius: 12px;
 }
-/* .edit-btns {
-  border: none;
-} */
 /* ------------ Tracker ------------ */
 .tracker-card {
   font-family: 'Montserrat', sans-serif;
