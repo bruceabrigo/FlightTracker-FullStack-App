@@ -17,17 +17,22 @@
   <div class="tracked-flight">
     {% for flights in tracked.data %}
       <h3>Status</h5>
-      <h5>{{flights.airline.name}} {{flights.flight.iata}} </h3>
+      <!-- Display the Airline and its code -->
+      <h5>{{flights.airline.name}} {{flights.flight.iata}} </h3> 
       <div class="flight-status">
             <div class="departure">
+              <!-- departure iata shows it's departure airport code -->
               <h2 class="status-title">{{flights.departure.iata}}</h2>
+              <!-- departure airport NAME not code -->
                 <p class="airport"> {{flights.departure.airport}} </p>
+                 <!-- Shows the schedules departure time -->
                 <p class="scheduled">{{flights.departure.scheduled}}</p>
             </div>
           <p class="departure">✈</p>
             <div class="arrival">
               <h2 class="status-title">{{flights.arrival.iata}} </h2>
               <p class="airport"> {{flights.arrival.airport}} </p>
+               <!-- Shows the scheduled arrival time -->
               <p class="scheduled"> {{flights.arrival.scheduled}}</p>
               </div>
         </div>

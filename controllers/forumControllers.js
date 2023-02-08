@@ -5,11 +5,6 @@ const Forum = require('../models/forum')
 
 const router = express.Router()
 
-/* ------------- Render Home Page ------------- */
-// router.get('/', (req, res) => {
-//   res.render('index.liquid')
-// })
-
 /* ------------- Index Route ------------- */
 router.get('/', (req, res) => {
   const { username, loggedIn, userId } = req.session
@@ -28,7 +23,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   req.body.owner = req.session.userId
   const forumPost = req.body
-  console.log('Created: \n', forumPost)
   Forum.create(forumPost) //creates a new forum to the request body
   .then(() => {
     res.redirect('/forums')
@@ -42,7 +36,6 @@ router.post('/', (req, res) => {
 /* ------------- Update Route ------------- */
 router.put('/:id', (req, res) => {
   const forumId = req.params.id
-    const updatedForum = req.body
     //create an if statement to check if User is logged in to allow Update and Delete function
     Forum.findById(forumId)
     .then(forum => {
@@ -51,7 +44,6 @@ router.put('/:id', (req, res) => {
       }
     })
      .then(forum => {
-        console.log('the newly updated forum', forum)
         res.redirect('/forums')
      })
     .catch((error) => {
@@ -82,10 +74,9 @@ router.get('/:id', (req, res) => {
   const forumId = req.params.id
   Forum.findById(forumId)
       .then(forum => {
-        console.log(forum)
         res.render('forums/show', {forum, ...req.session})
       })
-      .catch((error) => {
+      .catch((err) => { 
         res.redirect(`/error?error=${err}`)
       })
   })
