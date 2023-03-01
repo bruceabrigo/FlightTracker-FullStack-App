@@ -1,11 +1,15 @@
-# fly.toml file generated for rough-frost-1555 on 2023-02-10T12:40:14-06:00
+# fly.toml file generated for neatflighttracker on 2023-02-28T22:43:31-06:00
 
-app = "rough-frost-1555"
+app = "neatflighttracker"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
 
+[build]
+  builder = "heroku/buildpacks:20"
+
 [env]
+  PORT = "8080"
 
 [experimental]
   auto_rollback = true
