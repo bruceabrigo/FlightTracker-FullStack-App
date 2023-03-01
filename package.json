@@ -2,10 +2,10 @@
   "name": "neat-air-fullstack-app",
   "version": "1.0.0",
   "description": "Neat Airlines Web Application",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "seed": "node models/seed.js"
   },
   "repository": {
@@ -31,8 +31,7 @@
     "liquid-express-views": "^1.0.8",
     "method-override": "^3.0.0",
     "mongoose": "^6.8.4",
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.20"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
