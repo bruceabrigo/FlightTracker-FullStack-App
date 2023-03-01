@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
 
   Forum.find({})
     .populate('owner', 'username')
+    .populate('comments.author', '-password')
     .then(forums => {
       res.render('forums/index', {forums, username, loggedIn, userId})
     })
@@ -73,6 +74,7 @@ router.delete('/:id', (req, res) => {
 router.get('/:id', (req, res) => {
   const forumId = req.params.id
   Forum.findById(forumId)
+      .populate('comments.author', '-password')
       .then(forum => {
         res.render('forums/show', {forum, ...req.session})
       })

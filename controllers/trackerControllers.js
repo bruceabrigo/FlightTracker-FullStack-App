@@ -21,7 +21,7 @@ router.get('/track', (req, res) => {
       API_TOKEN: apiToken,
       options: {
         limit: 1,
-        flight_number: flightNum
+        flight_iata: flightNum
       }
     })
     .then(tracked => { 

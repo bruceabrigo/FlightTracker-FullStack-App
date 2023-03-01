@@ -1,5 +1,5 @@
 const express = require('express')
-const Forum = require('../models/comment')
+const Forum = require('../models/forum')
 const router = express.Router()
 
 /* ------------- Router to POST a new comment ------------- */
@@ -7,10 +7,10 @@ router.post('/:forumId', (req, res) => {
   const forumId = req.params.forumId
   if (req.session.loggedIn) {
       req.body.author = req.session.userId
-      const comments = req.body
-      Fruit.findById(forumId)
+      const theComment = req.body
+      Forum.findById(forumId)
           .then(forum => {
-              forum.comments.push(comments)
+              forum.comments.push(theComment)
               return forum.save()
           })
           .then(forum => {

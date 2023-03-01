@@ -1,25 +1,29 @@
 body {
-  /* background-image: url('https://samchui.com/wp-content/uploads/2018/07/airbus-a350-xwb-4k-passenger-plane-qantas-airlines-airbus-a350.jpg'); */
-  background-color: rgb(32,33,36);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #f3f3f3;
   font-family: Arial, Helvetica, sans-serif;
 }
 .hero {
-  margin-top: 210px;
-  margin-right: 500px;
+  background-image: url('https://samchui.com/wp-content/uploads/2018/07/airbus-a350-xwb-4k-passenger-plane-qantas-airlines-airbus-a350.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   color: white;
-  font-size: 25px;
-  font-family: 'Source Sans Pro', sans-serif;;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 .hero-welcome {
+  padding-top: 250px;
+  margin-right: 500px;
   font-family: 'Montserrat', sans-serif;
   font-size: 45px;
   margin-bottom: 1px;
 }
 .hero-info {
   margin: 0px;
+  font-family: 'Source Sans Pro', sans-serif;;
+
 }
 .home-track-btn {
   background-color: #1F255F;
@@ -42,7 +46,7 @@ body {
   color: white;
 }
 .navbar .navbar-nav .nav-link:hover{
-  color: #f79256;
+  color: #1aa7ec;
 }
 a {
   text-decoration: none;
@@ -96,7 +100,6 @@ legend {
 
 /* ------------ cards ------------ */
 .card {
-  display: flex;
   width: 100vh;
   align-content: center;
   margin: 12px auto;
@@ -138,7 +141,7 @@ legend {
   text-align: center;
   background-color: #ececec;
   width: 150px;
-  height: 100px;
+  height: 75px;
   margin: 0 auto;
   border-radius: 12px;
 }
@@ -147,12 +150,13 @@ legend {
 .tracker-card {
   font-family: 'Montserrat', sans-serif;
   width: 1000px;
-  height: 150px;
+  height: 250px;
   background-color: white;
   text-align: center;
-  margin: 0 auto;
+  margin: 15px auto;
   padding: 25px;
   margin-bottom: 50px;
+  border-radius: 15px;
 }
 .tracked-flight {
   font-family: 'Montserrat', sans-serif;
@@ -163,6 +167,7 @@ legend {
   margin: 0 auto;
   padding: 25px;
   margin-bottom: 50px;
+  border-radius: 15px;
 }
 .flight-status {
   display: flex;
@@ -187,6 +192,40 @@ legend {
 }
 i {
   cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .hero-welcome {
+    margin: auto;
+    text-align: center;
+    font-size: 25px;
+  }
+  .tracker-card {
+    width: 325px;
+  }
+  .tracker-title {
+    font-size: 25px;
+  }
+  .tracked-flight {
+    width: 325px;
+  }
+  .flight-status {
+    width: 280px;
+    height: 150px;
+  }
+  .card {
+    width: 280px;
+  }
+  .create-post {
+    width: 220px;
+    height: 50px;
+  }
+  legend {
+    font-size: 25px;
+  }
+  .user-control {
+    width: 225px;
+  }
 }
 
 /* Error Card */

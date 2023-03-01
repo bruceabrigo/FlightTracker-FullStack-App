@@ -16,55 +16,10 @@
   <title>Neat Air - Flight Tracker</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbarToggler7"
-        aria-controls="myNavbarToggler7" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            {% if loggedIn %}
-            <!-- If client is loggedIn, Track, Forums, History, and LOGOUT pages are avaiable -->
-            <div class="collapse navbar-collapse" id="myNavbarToggler7">
-              <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a href="/tracker" class="nav-link" >Track</a>
-                  </li>
-                  <li>
-                    <a href="/forums" class="nav-link">Forums</a></li>
-                  </li>
-                <a href="/"> <h1>Neat Flight Tracker</h1> </a>
-                  <li class="nav-item">
-                      <a href="/users/signup" class="nav-link">History</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="/users/logout" class="nav-link">LOGOUT</a>
-                  </li>
-              </ul>
-          </div>
-            {% else %}
-            <!-- if client is not signed in, Track, Forums, Signup, and Login pages are avaible -->
-            <div class="collapse navbar-collapse" id="myNavbarToggler7">
-              <ul class="navbar-nav mx-auto">
-                  <li class="nav-item">
-                    <a href="/tracker" class="nav-link" >Track</a>
-                  </li>
-                  <li>
-                    <a href="/forums" class="nav-link">Forums</a></li>
-                  </li>
-                <a href="/"> <h1>Neat Flight Tracker</h1> </a>
-                  <li class="nav-item">
-                      <a href="/users/signup" class="nav-link">Sign Up</a>
-                  </li>
-                  <li class="nav-item">
-                      <a href="/users/login" class="nav-link">Log In</a>
-                  </li>
-              </ul>
-          </div>
-            {% endif %}
-        </div>
-    </div>
-  </nav>
-  <main class="container-md">
+  <header>
+    {% render './navbar.liquid', loggedIn: loggedIn, username: username, userId: userId %}
+  </header>
+  <main>
     {% block content %}
     default content
     {% endblock %}

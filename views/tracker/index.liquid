@@ -6,14 +6,14 @@
     <legend class="tracker-title">Enter a Flight Number</legend>
     <form action="/tracker/track" method="GET">
     <fieldset>
-      <input type="text" class="form-control" name="flightNum" placeholder="EX: (4359)" required>
+      <input type="text" class="form-control" name="flightNum" placeholder="EX: (DL9979)" required>
       <button type="submit" class="btn btn-primary md-3">Track</button>
     </fieldset>
   </form>
   </div>
 </div>
 <!-- This will display the flight information after user input -->
-<div class="row">
+<div class="container">
   <div class="tracked-flight">
     {% for flights in tracked.data %}
       <h3>Status</h5>

@@ -65,25 +65,25 @@
   </div>
 {% endif %}
 <!-- ForIn to loop through each fourm. Each forum prints in single row line -->
-  <div class="row">
+  <div class="container">
     {% for forum in forums %}
-      <div class="card">
-        <div class="card-head">
-          <h5> {{forum.owner.username}} </h5>
-          <!-- check if forum owner matches userId - then allow pencil icon to open edit/delete modal -->
-            {% if forum.owner == userId %} <!-- STOP HERE STOP HERE STOP -->
-              <a style="color: black;" href="/forums/{{forum.id}}" role="button"><i class="bi-pencil-square"></i></a>
-            {% endif %}
+        <div class="card">
+          <div class="card-head">
+            <h5> {{forum.owner.username}} </h5>
+            <!-- check if forum owner matches userId - then allow pencil icon to open edit/delete modal -->
+              {% if forum.owner == userId %} <!-- STOP HERE STOP HERE STOP -->
+                <a style="color: black;" href="/forums/{{forum.id}}" role="button"><i class="bi-pencil-square"></i></a>
+              {% endif %}
+          </div>
+          <div class="cardbody">
+            <p class="card-text">
+              {{forum.content}}
+            </p>
+            <hr>
+            <a href="/forums/{{forum.id}}" class="comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+            
+          </div>
         </div>
-        <div class="cardbody">
-          <p class="card-text">
-            {{forum.content}}
-          </p>
-          <hr>
-          <a href="/forums/{{forum.id}}" class="comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
-          
-        </div>
-      </div>
     {% endfor %}
   </div>
 {% endblock %}

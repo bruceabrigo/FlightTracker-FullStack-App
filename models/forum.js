@@ -1,6 +1,7 @@
 /* ------------- Include Server Dependencies ------------- */
 //Only logged in users can make forum posts for other users to interact with
 const mongoose = require('../utils/connection')
+const commentSchema = require('./comment')
 
 const { Schema, model } = mongoose
 
@@ -14,7 +15,8 @@ const forumSchema = new Schema ({
   owner: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  }
+  },
+  comments: [commentSchema]
 }, {timestamps: true})
 
 const Forum = model('forum', forumSchema)

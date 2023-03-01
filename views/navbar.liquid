@@ -1,0 +1,43 @@
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                {% if loggedIn %}
+                <!-- If client is loggedIn, Track, Forums, History, and LOGOUT pages are avaiable -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                        <a href="/tracker" class="nav-link" >Track</a>
+                        </li>
+                        <li>
+                        <a href="/forums" class="nav-link">Forums</a></li>
+                        </li>
+                    <a href="/"> <h1>Neat Flight Tracker</h1> </a>
+                        <li class="nav-item">
+                        <a href="/users/logout" class="nav-link">LOGOUT</a>
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
+                <!-- if client is not signed in, Track, Forums, Signup, and Login pages are avaible -->
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                        <a href="/tracker" class="nav-link" >Track</a>
+                        </li>
+                        <li>
+                        <a href="/forums" class="nav-link">Forums</a></li>
+                        </li>
+                    <a href="/"> <h1>Neat Flight Tracker</h1> </a>
+                        <li class="nav-item">
+                            <a href="/users/signup" class="nav-link">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users/login" class="nav-link">Log In</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+    </nav>
+{% endblock %}
