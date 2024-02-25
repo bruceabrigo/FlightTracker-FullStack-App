@@ -1,14 +1,14 @@
 {% block content %}
   <div class="card mb-4 shadow">
     <div class="card-body">
-      <p> {{ comm.note }} </p>
+      <p>{{ comm.note }}</p>
       <div class="d-flex justify-content-between">
-        <small>This author: {{comm.author.username}} </small>
+        <small>This author: {{ comm.author.username }}</small>
+        <small>Comm id: {{ comm.id }}</small>
+        <small>Forum id: {{ forum.id }}</small>
         {% if comm.author == userId %}
-          <p>Comment Id{{comm.id}}</p>
-          <form id="delete-comment-form" action="/comments/{{ forum.id }}/comments/{{ comm.id }}?_method=DELETE" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
+          <form action="/comments/delete/{{forum.id}}/{{comm.id}}?_method=DELETE" method="POST">
+            <input class="btn btn-danger" type="submit" value="x">
           </form>
         {% endif %}
       </div>

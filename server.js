@@ -9,6 +9,7 @@ const CommentRouter = require('./controllers/commentControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
+
 const app = require('liquid-express-views')(express())
 
 /* ------------- Middleware ------------- */

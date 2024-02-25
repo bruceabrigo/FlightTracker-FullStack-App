@@ -46,8 +46,6 @@
       <form action="/comments/{{forum.id}}" method="POST">
         <fieldset>
           <legend class="forum-author"> {{username}} </legend>
-          <label for="exampleFormControlTextarea1" class="form-label" ></label>
-          {% comment %} <input type="text" name="note" class="form-control" style="display: none;"> {% endcomment %}
           <textarea class="form-control" rows="3" placeholder="Write a comment..." name="note" required></textarea>
         </fieldset>
         <input type="submit" class="btn btn-primary md-3" value="Comment"></input>
@@ -58,7 +56,7 @@
 {% if forum.comments.length > 0 %}
             <div class="container-sm just-content-center">
                 {% for comm in forum.comments %}
-                    {% render 'views/users/comment.liquid', comm: comm, userId: userId %}
+                    {% render 'views/users/comment.liquid', comm: comm, userId: userId, forum: forum %}
                 {% endfor %}
             </div>
         {% else %}
