@@ -53,7 +53,7 @@ router.delete('/delete/:forumId/:commId', (req, res) => {
         res.redirect(`/error?error=401`)
       }
     })
-    .then(forum => {
+    .then(() => {
       res.redirect(`/forums/${forumId}`)
     })
     .catch(err => {
