@@ -70,11 +70,13 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+// delete comment
+
 /* ------------- Show One Route ------------- */
 router.get('/:id', (req, res) => {
   const forumId = req.params.id
   Forum.findById(forumId)
-      .populate('comments.author', '-password')
+      .populate('comments.author', '-password',)
       .then(forum => {
         res.render('forums/show', {forum, ...req.session})
       })

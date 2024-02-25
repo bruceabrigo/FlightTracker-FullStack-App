@@ -7,13 +7,14 @@ router.post('/:forumId', (req, res) => {
   const forumId = req.params.forumId
   if (req.session.loggedIn) {
       req.body.author = req.session.userId
-      const theComment = req.body
+      const newComment = req.body
       Forum.findById(forumId)
           .then(forum => {
-              forum.comments.push(theComment)
+              forum.comments.push(newComment)
               return forum.save()
           })
           .then(forum => {
+            // Pass forumId as a parameter when rendering the template
             res.redirect(`/forums/${forum.id}`)
           })
           .catch(err => {
@@ -23,30 +24,35 @@ router.post('/:forumId', (req, res) => {
   } else {
       res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20comment%20on%20this%20forum`)
   }
-
 /* ------------- Delete the comment ------------- */
 
 })
-router.delete('/delete/:forumId/:commId', (req, res) => {
-  const {forumId, commId} = req.params
-  Forum.findById(forumId)
-    .then(forum => {
-      const comments = forum.comments.id(commId)
-      if (req.session.loggedIn) {
-        if (comments.author == req.session.userId) {
-          comments.remove()
-            forum.save()
-              res.redirect(`/forums/${forum.id}`)
-          } else {
-          res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20comment`)
+router.delete('/:forumId/comments/:commentId', (req, res) => {
+  const { forumId, commentId } = req.params;
+  if (req.session.loggedIn) {
+    Forum.findById(forumId)
+      .then(forum => {
+        const commentIndex = forum.comments.findIndex(comment => comment._id == commentId);
+        if (commentIndex !== -1 && forum.comments[commentIndex].author == req.session.userId) {
+          forum.comments.splice(commentIndex, 1);
+          return forum.save();
+        } else {
+          throw new Error('Comment not found or you are not authorized to delete it.');
         }
-      } else {
-        res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20comment`)
-      }
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect(`/error?error=${err}`)
-    })
-})
+      })
+      .then(() => {
+        res.redirect(`/forums/${forumId}`);
+      })
+      .catch(err => {
+        console.log(err);
+        res.redirect(`/error?error=${err}`);
+      });
+  } else {
+    res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20comment`);
+  }
+});
+
+
+
+
 module.exports = router

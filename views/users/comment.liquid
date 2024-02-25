@@ -3,10 +3,12 @@
     <div class="card-body">
       <p> {{ comm.note }} </p>
       <div class="d-flex justify-content-between">
-        <small>author: {{comm.author.username}} </small>
+        <small>This author: {{comm.author.username}} </small>
         {% if comm.author == userId %}
-          <form action="/comments/delete/{{fruit.id}}/{{comm.id}}?_method=DELETE" method="POST">
-            <input class="btn btn-danger" type="submit" value="x">
+          <p>Comment Id{{comm.id}}</p>
+          <form id="delete-comment-form" action="/comments/{{ forum.id }}/comments/{{ comm.id }}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-danger" type="submit">Delete</button>
           </form>
         {% endif %}
       </div>
