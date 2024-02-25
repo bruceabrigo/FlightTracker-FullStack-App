@@ -28,14 +28,14 @@ router.post('/:forumId', (req, res) => {
 
 /* ------------- Delete the comment ------------- */
 router.delete('/delete/:forumId/:commId', (req, res) => {
-  const { forumId, commentId } = req.params;
+  const { forumId, commId } = req.params;
 
   // find the forum via forumId
   Forum.findById(forumId)
     .then(forum => {
       // search for the comment via the comment Id
-      const findComment = forum.comments.id(commentId)
-      console.log('Comment id: \n', findComment)
+      const findComment = forum.comments.id(commId)
+      console.log('Comment Deleted: \n', findComment)
 
       if (req.session.loggedIn) {
         if (findComment.author == req.session.userId) {
@@ -45,7 +45,6 @@ router.delete('/delete/:forumId/:commId', (req, res) => {
             // save the forum with the removed id
             forum.save()
               // and redirect to the show page for that forum on successful remove
-              res.redirect(`forums/${forum.id}`) 
         } else {
           // otherwise you are not allowed to delete the comment
           res.redirect(`/error?error=You%20Are%20not%20allowed%20to%20delete%20this%20comment`)
@@ -53,6 +52,9 @@ router.delete('/delete/:forumId/:commId', (req, res) => {
       } else {
         res.redirect(`/error?error=401`)
       }
+    })
+    .then(forum => {
+      res.redirect(`/forums/${forumId}`)
     })
     .catch(err => {
       console.log(err)
