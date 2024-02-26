@@ -26,6 +26,7 @@ router.get('/track', (req, res) => {
     })
     .then(tracked => { 
       console.log('Tracked: ', tracked)
+      console.log('Departure: ', tracked.data)
       // res.json({ tracked: tracked })
       res.render('tracker/index', {tracked, loggedIn})
     })

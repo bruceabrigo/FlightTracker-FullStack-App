@@ -16,25 +16,25 @@
 <div class="container">
   <div class="tracked-flight">
     {% for flights in tracked.data %}
-      <h3>Status</h5>
+      <h3>Status</h3>
       <!-- Display the Airline and its code -->
-      <h5>{{flights.airline.name}} {{flights.flight.iata}} </h3> 
+      <h5>{{flights.airline.name}} {{flights.flight.iata}} </h5> 
       <div class="flight-status">
             <div class="departure">
               <!-- departure iata shows it's departure airport code -->
               <h2 class="status-title">{{flights.departure.iata}}</h2>
               <!-- departure airport NAME not code -->
                 <p class="airport"> {{flights.departure.airport}} </p>
-                 <!-- Shows the schedules departure time -->
-                <p class="scheduled">{{flights.departure.scheduled}}</p>
+                 <!-- Shows the schedules departure time in 12-hour format -->
+                <p class="scheduled"> Actual Departure: {{ flights.departure.scheduled | date: "%I:%M %p" }}</p>
             </div>
           <p class="departure">✈</p>
             <div class="arrival">
               <h2 class="status-title">{{flights.arrival.iata}} </h2>
               <p class="airport"> {{flights.arrival.airport}} </p>
                <!-- Shows the scheduled arrival time -->
-              <p class="scheduled"> {{flights.arrival.scheduled}}</p>
+              <p class="scheduled"> Estimated Arrival: {{flights.arrival.scheduled | date: "%I:%M %p" }} </p>
               </div>
         </div>
       {% endfor %} 
-    {%endblock%}
+    {% endblock %}
