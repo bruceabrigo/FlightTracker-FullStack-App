@@ -6,6 +6,7 @@ const UserRouter = require('./controllers/userControllers')
 const TrackerRouter = require('./controllers/trackerControllers')
 const ForumRouter = require('./controllers/forumControllers')
 const CommentRouter = require('./controllers/commentControllers')
+const LikesRouter = require('./controllers/likesControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
@@ -26,6 +27,7 @@ app.use('/users', UserRouter)
 app.use('/tracker', TrackerRouter)
 app.use('/forums', ForumRouter)
 app.use('/comments', CommentRouter)
+app.use('/likes', LikesRouter)
 
 /* ------------- Error Handler  ------------- */
 app.get('/error', (req, res) => {

@@ -4,13 +4,16 @@ const mongoose = require('../utils/connection')
 const {Schema, model} = mongoose
 
 const likeSchema = new Schema({
-    like: {
-        type: Integer,
-    },
-    author: {
+    // create a username o
+    username: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
+        unique: true
+    },
+    likeCount : {
+        type: Number,
+        default: 0
     }
 }, {
     timestamps: true
