@@ -197,6 +197,10 @@ i {
   display: flex;
   justify-content: space-around;
 }
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media screen and (max-width: 900px) {
   .hero-welcome {

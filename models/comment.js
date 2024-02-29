@@ -11,6 +11,11 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  // add createdAt field to return timestamp
+  createdAt: {
+    type: Date,
+    default: Date.now
   }
 }, {
   timestamps: true

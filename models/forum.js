@@ -18,7 +18,11 @@ const forumSchema = new Schema ({
     ref: 'User'
   },
   comments: [commentSchema],
-  likes: [likeSchema]
+  likes: [likeSchema],
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 }, {timestamps: true})
 
 const Forum = model('forum', forumSchema)

@@ -64,9 +64,12 @@
       </form>
   </div>
 {% endif %}
+<!-- add a sort filter for forums -->
+{% assign sortForums = forums | sort: 'createdAt' | reverse %}
 <!-- ForIn to loop through each fourm. Each forum prints in single row line -->
+<!-- ensure to loop through sortForms to show recent posts first -->
   <div class="container">
-    {% for forum in forums %}
+    {% for forum in sortForums %}
         <div class="card">
           <div class="card-head">
             <h5> {{forum.owner.username}} </h5>
@@ -83,11 +86,12 @@
               {% if loggedIn %}
               <div class="interaction">
                 <form action="/likes/{{forum.id}}" method="POST">
-                  <button type="submit" class="comment-btn">
-                    <i class="bi bi-heart"></i> Like
-                  </button>
+                <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
+                  <i class="bi bi-heart"></i> Like
+                </button>
+                
                 </form>
-                <a href="/forums/{{forum.id}}" class="interaction-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+                <a href="/forums/{{forum.id}}" class="btn btn-outline-secondary border-0 comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
               </div>
               {% endif %}
               <div class="interaction">
@@ -102,6 +106,9 @@
                 {% else %}
                   <small>0 Comments</small>
                 {% endif %}
+              </div>
+              <div class="interaction">
+                <small>Posted on: {{ forum.createdAt | date: "%m/%d/%y" }} </small>
               </div>
           </div>
         </div>

@@ -54,22 +54,18 @@
 </div>
 <!-- For-In for comments -->
 {% if forum.comments.length > 0 %}
-            <div class="container-sm just-content-center">
-                {% for comm in forum.comments %}
-                    {% render 'views/users/comment.liquid', comm: comm, userId: userId, forum: forum %}
-                {% endfor %}
-            </div>
-        {% else %}
-            <small>no comments yet...</small>
-{% endif %}
-{% if forum.comments.length > 0 %}
+  {% comment %} assign a sort filter to forum comments {% endcomment %}
+  {% assign sortedComments = forum.comments | sort: 'createdAt' | reverse %}
   <div class="container-sm just-content-center">
-      {% for comm in forum.comments %}
-          <p>{{ forum.comm.length }} Comments</p>
+      {% for comm in sortedComments %}
+          {% render 'views/users/comment.liquid', comm: comm, userId: userId, forum: forum %}
       {% endfor %}
   </div>
 {% else %}
-  <small>0 Comments</small>
+  <div class="interaction">
+      <small>no comments yet...</small>
+  </div>
 {% endif %}
+
 
 {% endblock %}
