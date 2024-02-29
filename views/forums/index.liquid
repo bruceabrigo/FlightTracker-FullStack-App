@@ -92,11 +92,14 @@
               {% endif %}
               <div class="interaction">
                 <!-- For-In for like count -->
-                {% if forum.comments.length > 0 || forum.likes.length > 0 %}
+                {% if forum.likes.length > 0 %}
                     <small>{{ forum.likes.length }} likes</small>
-                    <small>{{ forum.comments.length }} Comments</small>
                 {% else %}
                   <small>0 Likes</small>
+                {% endif %}
+                {% if forum.comments.length > 0 %}
+                    <small>{{ forum.comments.length }} Comments</small>
+                {% else %}
                   <small>0 Comments</small>
                 {% endif %}
               </div>
