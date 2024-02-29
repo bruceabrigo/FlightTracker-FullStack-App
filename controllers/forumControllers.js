@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
   Forum.find({})
     .populate('owner', 'username')
     .populate('comments.author', '-password')
+    .populate('likes')
     .then(forums => {
       res.render('forums/index', {forums, username, loggedIn, userId})
     })

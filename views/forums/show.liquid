@@ -62,5 +62,14 @@
         {% else %}
             <small>no comments yet...</small>
 {% endif %}
+{% if forum.comments.length > 0 %}
+  <div class="container-sm just-content-center">
+      {% for comm in forum.comments %}
+          <p>{{ forum.comm.length }} Comments</p>
+      {% endfor %}
+  </div>
+{% else %}
+  <small>0 Comments</small>
+{% endif %}
 
 {% endblock %}

@@ -80,9 +80,25 @@
               {{forum.content}}
             </p>
             <hr>
+              {% if loggedIn %}
               <div class="interaction">
-                <a href="/forums/{{forum.id}}" class="comment-btn"><i class="bi bi-heart">  Like</i></a>
-                <a href="/forums/{{forum.id}}" class="comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+                <form action="/likes/{{forum.id}}" method="POST">
+                  <button type="submit" class="comment-btn">
+                    <i class="bi bi-heart"></i> Like
+                  </button>
+                </form>
+                <a href="/forums/{{forum.id}}" class="interaction-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+              </div>
+              {% endif %}
+              <div class="interaction">
+                <!-- For-In for like count -->
+                {% if forum.comments.length > 0 || forum.likes.length > 0 %}
+                    <small>{{ forum.likes.length }} likes</small>
+                    <small>{{ forum.comments.length }} Comments</small>
+                {% else %}
+                  <small>0 Likes</small>
+                  <small>0 Comments</small>
+                {% endif %}
               </div>
           </div>
         </div>

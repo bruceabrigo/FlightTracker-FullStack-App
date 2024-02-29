@@ -126,7 +126,7 @@ legend {
   display: flex;
   justify-content: space-between;
 }
-.comment-btn {
+.interaction-btn {
   display: flex;
   justify-content: center;
   color: black;
