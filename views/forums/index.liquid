@@ -85,10 +85,19 @@
             <hr>
               {% if loggedIn %}
               <div class="interaction">
-                <form action="/likes/{{forum.id}}" method="POST">
-                <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
-                  <i class="bi bi-heart"></i> Like
-                </button>
+                {% assign liked = false %}
+                {% for like in forum.likes %}
+                  {% if like.user_id == current_user.id %}
+                    {% assign liked = true %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                
+                <form action="/likes/{{ forum.id }}" method="POST">
+                  <button type="submit" class="btn btn-outline-secondary border-0 comment-btn" {% if liked %}disabled{% endif %}>
+                    <i class="bi bi-heart"></i> {% if liked %}Liked{% else %}Like{% endif %}
+                  </button>
+                </form>
                 
                 </form>
                 <a href="/forums/{{forum.id}}" class="btn btn-outline-secondary border-0 comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>

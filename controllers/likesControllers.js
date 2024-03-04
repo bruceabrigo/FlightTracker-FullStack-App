@@ -20,16 +20,10 @@ router.post('/:forumId', (req, res) => {
                 if (!forum) {
                     throw new Error('Forum not found');
                 }
-                // create conditional to limit likes per user
-                if (forum.likes.includes(userId)) {
-                    console.log('You already liked this post')
-                    res.redirect(`/error?error=You%20Already%20liked%20%this%20forum`)
-                } else {
                     // Add the new like to the forum's likes array
                     forum.likes.push(newLike)
                     // Save the updated forum
                     return forum.save()
-                }
             })
             .then(updatedForum => {
                 console.log('Updated form: ', updatedForum)
