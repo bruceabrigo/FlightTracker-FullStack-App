@@ -51,15 +51,15 @@ router.post('/login', async (req, res) => {
                console.log('session user id', req.session.userId)
                res.redirect('/')
              } else {
-                 res.json({ error: 'username or password is incorrect' })
+                res.render('users/login', {error: 'Incorrect username or password.'})
+                console.log('incorrect user or pass')
             }
         } else {
             res.json({ error: 'user does not exist' })
         }
     })
     .catch(err => {
-         console.log(err)
-        res.json(err)
+        console.log(err)
     })
 })
 

@@ -9,6 +9,12 @@
              <label class="form-label">Password</label>
              <input type="password" name="password" placeholder="enter password" class="user-control" required>
         </fieldset>
+        <!-- handle login error -->
+        <div>
+        {% if error %}
+            <small class="font-weight-bold text-danger">{{ error }}</small>
+        {% endif %}
+        </div>
         <input type="submit" value="Log In" class="btn btn-success">
     </form>
 </div>
