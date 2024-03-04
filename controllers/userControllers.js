@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
     await bcrypt.genSalt(10)
   )
   User.create(newUser)
-    .then(user => {
+    .then(() => {
       res.redirect('/users/login')
     })
     .catch(error => {
@@ -51,11 +51,12 @@ router.post('/login', async (req, res) => {
                console.log('session user id', req.session.userId)
                res.redirect('/')
              } else {
+              // re-render user/login page and pass error message
                 res.render('users/login', {error: 'Incorrect username or password.'})
-                console.log('incorrect user or pass')
             }
         } else {
-            res.json({ error: 'user does not exist' })
+          // re-render users/login page and pass error message for non existent user
+            res.render('users/login', {error: 'User does not exist'})
         }
     })
     .catch(err => {
