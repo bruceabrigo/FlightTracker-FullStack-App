@@ -39,4 +39,40 @@ router.post('/:forumId', (req, res) => {
     }
 })
 
+
+// create a delete router
+// delete router/forumid/likeid
+router.delete('/delete/:forumId/:likeId', (req, res) => {
+    // define our request parameters
+    const { forumId, likeId } = req.params
+
+    // Find the forum
+    Forum.findById(forumId)
+    // use the forum to find the like id
+    .then(forum => {
+        const findLike = forum.likes.id(likeId)
+        console.log('Like: ', findLike)
+        // if user is loggedin
+        if (req.session.loggedIn) {
+            // if author id matches the session id
+            if (findLike.author == req.session.userId) {
+                findLike.remove()
+                forum.save()
+            } else {
+                return res.redirect('/error?error=You%20Are20%Not%20Allowed%20To%20Dislike%20This%20Post')
+            }
+        } else {
+            return res.redirect('/error?error=You%20Are%20Not%20Logged%20In')
+        }
+    })
+    // upon successful dislike, refresh forum page
+    .then(() => {
+        res.redirect('/forums')
+    })
+    // catch errors
+    .catch(err => {
+        res.redirect(`/error?error=${err}`)
+    })
+})
+
 module.exports = router

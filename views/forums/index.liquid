@@ -83,32 +83,31 @@
               {{forum.content}}
             </p>
             <hr>
-              {% if loggedIn %}
-                <div class="interaction">
-                  {% assign liked = false %}
-                  {% for like in forum.likes %}
-                    {% if like.user_id == current_user.id %}
-                      {% assign liked = true %}
-                      {% break %}
-                    {% endif %}
-                  {% endfor %}
-                             
+            {% if loggedIn %}
+              <div class="interaction">
+                {% assign liked = false %}
+                {% for like in forum.likes %}
+                  {% if like.user_id == current_user.id %}
+                    {% assign liked = true %}
+                    <form action="/likes/delete/{{ forum.id }}/{{ like.id }}?_method=DELETE" method="POST">
+                      <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
+                        <i class="bi bi-heart-fill"></i> Liked
+                      </button>           
+                    </form>
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+                {% unless liked %}
                   <form action="/likes/{{ forum.id }}" method="POST">
-                  {% if liked %}
-                    <button type="submit" class="btn btn-outline-secondary border-0 comment-btn" {% if liked %} disabled {% endif %}>
-                      <i class="bi bi-heart-fill"></i> Liked
-                    </button>
-                  {% else %}
-                  <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
+                    <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
                       <i class="bi bi-heart"></i> Like
                     </button>
-                  {% endif %}
-                </form>
-                
-                </form>
+                  </form>
+                {% endunless %}
                 <a href="/forums/{{forum.id}}" class="btn btn-outline-secondary border-0 comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
               </div>
-              {% endif %}
+            {% endif %}
+            
               <div class="interaction">
                 <!-- For-In for like count -->
                 {% if forum.likes.length > 0 %}
