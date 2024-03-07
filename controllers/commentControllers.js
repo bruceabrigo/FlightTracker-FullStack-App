@@ -15,6 +15,7 @@ router.post('/:forumId', (req, res) => {
       })
       .then(forum => {
         // Pass forumId as a parameter when rendering the template
+        console.log('New comment', forum)
         res.redirect(`/forums/${forum.id}`);
       })
       .catch(err => {

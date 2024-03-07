@@ -83,31 +83,32 @@
               {{forum.content}}
             </p>
             <hr>
-            {% if loggedIn %}
-              <div class="interaction">
-                {% assign liked = false %}
-                {% for like in forum.likes %}
-                  {% if like.user_id == current_user.id %}
-                    {% assign liked = true %}
-                    <form action="/likes/delete/{{ forum.id }}/{{ like.id }}?_method=DELETE" method="POST">
-                      <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
-                        <i class="bi bi-heart-fill"></i> Liked
-                      </button>           
-                    </form>
-                    {% break %}
-                  {% endif %}
-                {% endfor %}
-                {% unless liked %}
-                  <form action="/likes/{{ forum.id }}" method="POST">
-                    <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
-                      <i class="bi bi-heart"></i> Like
-                    </button>
+          {% comment %} check if post is {% endcomment %}
+          {% if loggedIn %}
+            <div class="interaction">
+              {% assign liked = false %}
+              {% for like in forum.likes %}
+                {% if like.author == userId %}
+                  {% assign liked = true %}
+                  <form action="/likes/delete/{{ forum.id }}/{{ like.id }}?_method=DELETE" method="POST">
+                  <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
+                    <i class="bi bi-heart-fill"></i> Liked
+                    </button>           
                   </form>
-                {% endunless %}
-                <a href="/forums/{{forum.id}}" class="btn btn-outline-secondary border-0 comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
-              </div>
-            {% endif %}
-            
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              {% unless liked %}
+                <form action="/likes/{{ forum.id }}" method="POST">
+                  <button type="submit" class="btn btn-outline-secondary border-0 comment-btn">
+                    <i class="bi bi-heart"></i> Like
+                  </button>
+                </form>
+              {% endunless %}
+              <a href="/forums/{{forum.id}}" class="btn btn-outline-secondary border-0 comment-btn"><i class="bi bi-chat-square-text">  Comment</i></a>
+            </div>
+          {% endif %}
+
               <div class="interaction">
                 <!-- For-In for like count -->
                 {% if forum.likes.length > 0 %}
