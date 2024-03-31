@@ -71,7 +71,7 @@ router.delete('/delete/:forumId/:likeId', (req, res) => {
     })
     // catch errors
     .catch(err => {
-        res.redirect(`/error?error=${error}`)
+        res.redirect(`/error?error=${err}`)
     })
 })
 

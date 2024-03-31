@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express')
 // const axios = require('axios')
 const flightData = require('flight-data')
+// import user model
+const User = require('../models/user')
 
 const router = express.Router()
 const apiToken = process.env.API_TOKEN
