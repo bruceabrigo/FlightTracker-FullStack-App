@@ -28,6 +28,7 @@ app.use('/tracker', TrackerRouter)
 app.use('/forums', ForumRouter)
 app.use('/comments', CommentRouter)
 app.use('/likes', LikesRouter)
+app.use('/history', )
 
 /* ------------- Error Handler  ------------- */
 app.get('/error', (req, res) => {
