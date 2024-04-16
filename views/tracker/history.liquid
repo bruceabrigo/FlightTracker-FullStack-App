@@ -1,0 +1,25 @@
+{% layout 'layout.liquid' %}
+{% block content %}
+<!-- Sort history -->
+{% assign sortHistory = tracked | sort: 'createdAt' | reverse %}
+<h1>brothger</h1>
+{% for flight in searchHistory %}
+    <div class="card">
+      <h5>{{ flight.flightNum }}</h5>
+      <div class="flight-status">
+        <div class="departure">
+          <h2 class="status-title">{{ flight.departure.iata }}</h2>
+          <p class="airport">{{ flight.departure.airport }}</p>
+          <p class="scheduled">Actual Departure: {{ flight.departure.scheduled | date: "%I:%M %p" }}</p>
+        </div>
+        <p class="departure">✈</p>
+        <div class="arrival">
+          <h2 class="status-title">{{ flight.arrival.iata }}</h2>
+          <p class="airport">{{ flight.arrival.airport }}</p>
+          <p class="scheduled">Estimated Arrival: {{ flight.arrival.scheduled | date: "%I:%M %p" }}</p>
+        </div>
+      </div>
+    </div>
+{% endfor %}
+  
+{% endblock %}

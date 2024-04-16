@@ -41,9 +41,8 @@ router.get('/track', (req, res) => {
       .then(savedUser => { 
         // Log the successful save for confirmation
         const lastSearch = savedUser.searched[savedUser.searched.length - 1]; 
-        console.log(`Search for flight ${flightNum} saved.`, {user: savedUser.username, lastSearch});
+        console.log(`Search for flight ${flightNum} saved.`, {user: savedUser.username, lastSearch, trackedData: tracked.data});
         // If logged in, return flight data to user sessionId
-        res.render('tracker/index', {tracked, loggedIn: true});
       })
       .catch((err) => {
         console.log(err);
@@ -59,5 +58,7 @@ router.get('/track', (req, res) => {
     res.redirect('/tracker/error');
   });
 });
+
+
 
 module.exports = router;
