@@ -7,7 +7,6 @@ const TrackerRouter = require('./controllers/trackerControllers')
 const ForumRouter = require('./controllers/forumControllers')
 const CommentRouter = require('./controllers/commentControllers')
 const LikesRouter = require('./controllers/likesControllers')
-// const TrackedHistoryRouter = require('./controllers/trackerHistoryControllers')
 const middleware = require('./utils/middleware')
 const path = require('path')
 
@@ -29,7 +28,6 @@ app.use('/tracker', TrackerRouter)
 app.use('/forums', ForumRouter)
 app.use('/comments', CommentRouter)
 app.use('/likes', LikesRouter)
-// app.use('/history', TrackedHistoryRouter)
 
 /* ------------- Error Handler  ------------- */
 app.get('/error', (req, res) => {

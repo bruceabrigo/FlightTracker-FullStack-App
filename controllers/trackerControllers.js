@@ -30,7 +30,8 @@ router.get('/track', (req, res) => {
     if (req.session.loggedIn) {
       // Saved userId as session's userId
       const userId = req.session.userId;
-      User.findById(userId).then(user => {
+      User.findById(userId)
+      .then(user => {
         if (!user) {
           throw new Error('User not found');
         }
@@ -58,6 +59,16 @@ router.get('/track', (req, res) => {
     res.redirect('/tracker/error');
   });
 });
+
+router.get('/history', (req, res) => {
+  const {username, loggedIn, userId} = req.session
+  // return the saved user 
+  User.findById(userId)
+  .then(user => {
+    console.log(user)
+    res.render('tracker/history', {user, username, loggedIn, userId})
+  })
+})
 
 
 
