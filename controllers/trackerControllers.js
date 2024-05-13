@@ -9,7 +9,8 @@ const apiToken = process.env.API_TOKEN;
 
 /* ------------- Render tracker page ------------- */
 router.get('/', (req, res) => {
-  res.render('tracker/index');
+  const {username, loggedIn, userId} = req.session
+  res.render('tracker/index', {username, loggedIn, userId});
 });
 
 /* ------------- Aviation-Stack API ------------- */

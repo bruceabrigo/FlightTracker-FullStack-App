@@ -2,13 +2,13 @@
 {% block content %}
 <!-- Sort history -->
 {% assign sortHistory = tracked | sort: 'createdAt' | reverse %}
-<h1>brothger</h1>
-{% for flight in searchHistory %}
+<h1>{{user.username}}</h1>
+{% for flight in user.searched %}
     <div class="card">
       <h5>{{ flight.flightNum }}</h5>
       <div class="flight-status">
         <div class="departure">
-          <h2 class="status-title">{{ flight.departure.iata }}</h2>
+          <h2 class="status-title">{{ flight.searchData.}}</h2>
           <p class="airport">{{ flight.departure.airport }}</p>
           <p class="scheduled">Actual Departure: {{ flight.departure.scheduled | date: "%I:%M %p" }}</p>
         </div>
